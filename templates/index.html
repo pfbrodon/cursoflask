@@ -1,24 +1,32 @@
-<form action="/new" method="POST">
+{% extends 'layout.html' %} {% block body %}
 
 
-    <input type="text" name="fullname" placeholder="Escriba su Nombre Completo">
-    <input type="text" name="email" placeholder="Escriba su Email">
-    <input type="text" name="phone" placeholder="Escriba su Telefono">
+<br>
+<div class="container">
+    <form action="/new" method="POST">
 
-    <button>Guardar</button>
 
-</form>
+        <input type="text" name="fullname" placeholder="Escriba su Nombre Completo">
+        <input type="text" name="email" placeholder="Escriba su Email">
+        <input type="text" name="phone" placeholder="Escriba su Telefono">
 
-<div>
-    {%for contact in contacts%}
+        <button>Guardar</button>
+
+    </form>
+    <br>
     <div>
-        <h5>{{contact.fullname}}</h5>
+        {%for contact in contacts%}
         <div>
-            <a href="{{url_for('contacts.update', id=contact.id)}}">UPDATE</a>
-            <a href="{{url_for('contacts.delete', id=contact.id)}}">DELETE</a>
+            <h5>{{contact.fullname}}</h5>
+            <div>
+                <a href="{{url_for('contacts.update', id=contact.id)}}">UPDATE</a>
+                <a href="{{url_for('contacts.delete', id=contact.id)}}">DELETE</a>
+            </div>
+            <p>{{contact.email}}</p>
+            <p>{{contact.phone}}</p>
         </div>
-        <p>{{contact.email}}</p>
-        <p>{{contact.phone}}</p>
+        {% endfor%}
     </div>
-    {% endfor%}
+
 </div>
+<br> {% endblock %}
