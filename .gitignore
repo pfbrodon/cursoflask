@@ -1,0 +1,6 @@
+# created by virtualenv automatico
+venv 
+__pycache__
+models/__pycache__
+routes/__pycache__
+utils/__pycache__
